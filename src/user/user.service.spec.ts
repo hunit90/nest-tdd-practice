@@ -1,5 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { UserService } from './user.service';
+import { CreateUserDto } from "./dto/create-user.dto";
 
 describe('UserService', () => {
   let service: UserService;
@@ -17,6 +18,7 @@ describe('UserService', () => {
   });
 
   test('should be defined', () => {
-    expect(service.create(createUserDto)).not.toBeDefined();
+    const createUserDto: CreateUserDto = {};
+    expect(service.create(createUserDto)).toBe('This action adds a new user');
   });
 });
