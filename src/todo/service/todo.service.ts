@@ -11,7 +11,6 @@ export class TodoService {
   }
 
   async fetchTodoItem(id: number): Promise<Todo | null> {
-    return this.prismaService
-      .todo.findUnique({ where: { id: Number(id) } });
+    return this.prismaService.todo.findUnique({ where: { id: Number(id) } });
   }
 }
