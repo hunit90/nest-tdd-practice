@@ -35,6 +35,10 @@ export class TodoService {
   }
 
   async deleteTodoItem(id: number): Promise<Todo | null> {
+    const todoItem = this.prismaService.todo.findUnique({ where: { id: Number(id) } });
+    if (!todoItem) {
+      throw new BadRequestException('Todo does not exist');
+    }
     return this.prismaService.todo.delete({ where: { id: Number(id) } });
   }
 }
